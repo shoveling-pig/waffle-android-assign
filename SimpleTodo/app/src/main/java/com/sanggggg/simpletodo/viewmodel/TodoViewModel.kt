@@ -13,11 +13,6 @@ import kotlinx.coroutines.launch
 
 class TodoViewModel(private val repository: TodoRepository) : ViewModel() {
 
-    /*
-    val allTodos: LiveData<List<Todo>> by lazy {
-        repository.getAllTodos()
-    }
-     */
     var allTodos: LiveData<List<Todo>> = repository.getAllTodos()
 
     fun checkTodo() {
