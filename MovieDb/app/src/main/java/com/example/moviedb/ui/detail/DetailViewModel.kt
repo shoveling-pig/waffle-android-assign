@@ -1,19 +1,20 @@
 package com.example.moviedb.ui.detail
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.moviedb.api.Movie
 import com.example.moviedb.repository.MovieRepository
 
 class DetailViewModel(private val repository: MovieRepository): ViewModel() {
-    var imgUrl: String? = ""
-    var title: String? = ""
-    var description: String? = ""
+    val imgUrl: MutableLiveData<String> = MutableLiveData()
+    val title: MutableLiveData<String> = MutableLiveData()
+    val description: MutableLiveData<String> = MutableLiveData()
 
     fun setMovie(id: Long) {
         val movie = repository.getMovieById(id)
-        imgUrl = movie.value?.backdrop_path
-        title = movie.value?.title
-        description = movie.value?.overview
+        imgUrl.value = movie.value?.backdrop_path
+        title.value = movie.value?.title
+        description.value = movie.value?.overview
     }
 }

@@ -7,6 +7,6 @@ import retrofit2.http.Query
 interface MovieService {
 
     @GET("discover/movie")
-    fun fetchDiscoverMovie(@Query("page") page: Int, @Query("sort_by") sort_by: String) : Single<DiscoverResponse>
+    fun fetchDiscoverMovie(@Query("api_key") api_key: String, @Query("page") page: Int, @Query("sort_by") sort_by: String) : Single<DiscoverResponse>
 
 }

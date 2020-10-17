@@ -15,10 +15,10 @@ fun bindAdapter(view: RecyclerView, adapter: RecyclerView.Adapter<*>) {
 }
 
 @BindingAdapter("items")
-fun bindItems(view: RecyclerView, movie: List<Movie>?) {
+fun bindItems(view: RecyclerView, movies: List<Movie>?) {
     val adapter = view.adapter as? MovieListAdapter
-    if (movie != null) {
-        adapter?.setItems(movie)
+    if (movies != null) {
+        adapter?.setItems(movies)
     }
 }
 

@@ -10,7 +10,7 @@ import com.example.moviedb.databinding.ActivityDetailBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailActivity : AppCompatActivity() {
-    private val viewModel: DetailViewModel by viewModel()
+    private val detailViewModel: DetailViewModel by viewModel()
     private lateinit var binding: ActivityDetailBinding
     private var movieId: Long = 0
 
@@ -25,9 +25,9 @@ class DetailActivity : AppCompatActivity() {
 
         binding.run {
             lifecycleOwner = this@DetailActivity
-            viewModel = viewModel
+            viewModel = detailViewModel
         }
 
-        viewModel?.setMovie(movieId)
+        detailViewModel?.setMovie(movieId)
     }
 }

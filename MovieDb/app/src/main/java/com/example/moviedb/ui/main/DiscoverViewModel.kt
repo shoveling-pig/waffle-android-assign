@@ -6,5 +6,5 @@ import com.example.moviedb.api.Movie
 import com.example.moviedb.repository.MovieRepository
 
 class DiscoverViewModel(private val repository: MovieRepository) : ViewModel() {
-    var allMovies: LiveData<List<Movie>> = repository.getAllMovies()
+    val allMovies: LiveData<List<Movie>> = repository.getAllMovies()
 }
