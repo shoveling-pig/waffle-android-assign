@@ -7,12 +7,14 @@ import androidx.fragment.app.Fragment
 import com.example.seminarmanager.R
 import com.example.seminarmanager.SeminarManagerApplication
 import com.example.seminarmanager.databinding.FragmentSeminarBinding
+import com.example.seminarmanager.room.PartSeminarIdViewModel
 import com.example.seminarmanager.ui.createseminar.CreateSeminarActivity
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 
 class SeminarFragment : Fragment() {
     private val mainViewModel: MainViewModel by sharedViewModel()
+    private val partViewModel: PartSeminarIdViewModel by sharedViewModel()
     private lateinit var binding: FragmentSeminarBinding
 
     override fun onCreateView(
@@ -23,7 +25,7 @@ class SeminarFragment : Fragment() {
         binding.run {
             lifecycleOwner = this@SeminarFragment
             viewModel = mainViewModel
-            adapter = SeminarAdapter()
+            adapter = SeminarAdapter(partViewModel)
         }
 
         mainViewModel.setSeminarList()

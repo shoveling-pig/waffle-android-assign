@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.seminarmanager.R
+import com.example.seminarmanager.room.PartSeminarIdViewModel
 import com.example.seminarmanager.ui.login.LoginViewModel
 import com.example.seminarmanager.ui.signup.SignUpActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val mainViewModel: MainViewModel by viewModel()
+    private val partViewModel: PartSeminarIdViewModel by viewModel()
     private val seminarFragment by lazy { SeminarFragment() }
     private val userFragment by lazy { UserFragment() }
     private val fragments: List<Fragment> = listOf(seminarFragment, userFragment)

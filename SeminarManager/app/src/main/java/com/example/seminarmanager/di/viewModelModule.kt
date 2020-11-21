@@ -1,5 +1,7 @@
 package com.example.seminarmanager.di
 
+import com.example.seminarmanager.repository.UserRepository
+import com.example.seminarmanager.room.PartSeminarIdViewModel
 import com.example.seminarmanager.ui.createseminar.CreateSeminarViewModel
 import com.example.seminarmanager.ui.detailseminar.DetailSeminarViewModel
 import com.example.seminarmanager.ui.login.LoginViewModel
@@ -10,7 +12,7 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     viewModel {
-        MainViewModel(get())
+        MainViewModel(get(), get())
     }
     viewModel {
         LoginViewModel(get())
@@ -18,10 +20,14 @@ val viewModelModule = module {
     viewModel {
         SignUpViewModel(get())
     }
+
     viewModel {
         CreateSeminarViewModel(get())
     }
     viewModel {
         DetailSeminarViewModel(get())
+    }
+    viewModel {
+        PartSeminarIdViewModel(get())
     }
 }

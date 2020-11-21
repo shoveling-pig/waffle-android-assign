@@ -6,6 +6,7 @@ import com.example.seminarmanager.api.Seminar
 import com.example.seminarmanager.api.SimpleSeminar
 import com.example.seminarmanager.repository.SeminarRepository
 import com.example.seminarmanager.repository.UserRepository
+import com.example.seminarmanager.room.PartSeminarIdRepository
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 class MainViewModel(private val seminarRepo: SeminarRepository, private val userRepo: UserRepository) : ViewModel() {

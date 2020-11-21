@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.example.seminarmanager.R
+import com.example.seminarmanager.SeminarManagerApplication
 import com.example.seminarmanager.databinding.ActivityDetailSeminarBinding
 import com.example.seminarmanager.databinding.ActivityLoginBinding
+import com.example.seminarmanager.room.PartSeminarIdViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailSeminarActivity : AppCompatActivity() {
@@ -19,6 +21,7 @@ class DetailSeminarActivity : AppCompatActivity() {
     }
 
     private val detailSeminarViewModel: DetailSeminarViewModel by viewModel()
+    private val partSeminarIdViewModel: PartSeminarIdViewModel by viewModel()
     private val binding: ActivityDetailSeminarBinding by lazy { DataBindingUtil.setContentView(this, R.layout.activity_detail_seminar) }
     private var seminarId: Long = 0
 
@@ -44,5 +47,10 @@ class DetailSeminarActivity : AppCompatActivity() {
 
     private fun join() {
         detailSeminarViewModel.joinSeminar(seminarId)
+
+        val role = SeminarManagerApplication.prefs.getString("user_role_key", "none")
+        if (role == "participant") {
+            partSeminarIdViewModel.insertId(seminarId)
+        }
     }
 }

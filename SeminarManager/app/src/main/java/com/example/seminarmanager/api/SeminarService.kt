@@ -10,6 +10,7 @@ interface SeminarService {
     fun getSeminarList(@Query("name") name: String, @Query("order") order: String) : Single<List<SimpleSeminar>>
 
     // 세미나 생성
+    @FormUrlEncoded
     @POST("seminar")
     fun postSeminar(@Field("name") name: String,
                     @Field("capacity") capacity: String,
@@ -23,6 +24,7 @@ interface SeminarService {
     fun getSeminar(@Path("seminarId") seminarId: Long) : Single<Seminar>
 
     // 세미나 등록
+    @FormUrlEncoded
     @POST("seminar/{seminarId}/user")
     fun joinSeminar(@Path("seminarId") seminarId: Long) : Single<Seminar>
 

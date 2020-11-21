@@ -1,9 +1,9 @@
 package com.example.seminarmanager.repository
 
+import android.util.Log
 import com.example.seminarmanager.SeminarManagerApplication
 import com.example.seminarmanager.api.UserService
 import io.reactivex.rxjava3.schedulers.Schedulers
-import retrofit2.http.Field
 
 class UserRepository(private val service: UserService) {
     fun login(username: String, password:String): Boolean {

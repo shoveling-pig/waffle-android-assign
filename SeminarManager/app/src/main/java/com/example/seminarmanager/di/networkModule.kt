@@ -3,6 +3,7 @@ package com.example.seminarmanager.di
 import com.example.seminarmanager.BuildConfig
 import com.example.seminarmanager.SeminarManagerApplication
 import com.example.seminarmanager.api.SeminarService
+import com.example.seminarmanager.api.UserService
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -15,13 +16,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 val networkModule = module {
     single { provideOkHttpClient() }
     single { provideRetrofit(get(), BuildConfig.WAFFLE_BACKEND_BASE_URL) }
-    single { provideApiService(get()) }
+    single { provideSeminarService(get()) }
+    single { provideUserService(get()) }
 }
 
 private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
     val loggingInterceptor = HttpLoggingInterceptor()
     loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
 
+    /*
     val apiKeyInterceptor = object: Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             val request = chain.request()
@@ -29,6 +32,7 @@ private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
             return chain.proceed(request.newBuilder().url(url).build())
         }
     }
+     */
 
     val tokenInterceptor = object: Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
@@ -43,7 +47,7 @@ private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
 
     OkHttpClient.Builder()
         .addInterceptor(loggingInterceptor)
-        .addInterceptor(apiKeyInterceptor)
+        //.addInterceptor(apiKeyInterceptor)
         .addInterceptor(tokenInterceptor)
         .build()
 } else OkHttpClient
@@ -61,5 +65,8 @@ private fun provideRetrofit(
         .client(okHttpClient)
         .build()
 
-private fun provideApiService(retrofit: Retrofit): SeminarService =
+private fun provideSeminarService(retrofit: Retrofit): SeminarService =
     retrofit.create(SeminarService::class.java)
+
+private fun provideUserService(retrofit: Retrofit): UserService =
+    retrofit.create(UserService::class.java)
