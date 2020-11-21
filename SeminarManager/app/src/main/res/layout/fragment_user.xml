@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.seminarmanager.ui.main.MainViewModel" />
+        <variable
+            name="instSeminarAdapter"
+            type="com.example.seminarmanager.ui.main.InstSeminarAdapter" />
+        <variable
+            name="partSeminarAdapter"
+            type="com.example.seminarmanager.ui.main.PartSeminarAdapter" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.UserFragment">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/user_frag_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="username" />
+                <EditText
+                    android:id="@+id/user_frag_firstname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="firstname" />
+                <EditText
+                    android:id="@+id/user_frag_lastname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="lastname" />
+                <Button
+                    android:id="@+id/editBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="수정하기" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/inst_seminar_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_seminar"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:adapter="@{instSeminarAdapter}"
+                app:items="@{viewModel.instSeminar}"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/part_seminar_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_seminar"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:adapter="@{partSeminarAdapter}"
+                app:items="@{viewModel.partSeminar}"/>
+
+        </LinearLayout>
+    </FrameLayout>
+
+</layout>

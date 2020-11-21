@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.seminarmanager.ui.main.MainViewModel" />
+        <variable
+            name="adapter"
+            type="com.example.seminarmanager.ui.main.SeminarAdapter" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.SeminarFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/seminar_frag_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_seminar"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:adapter="@{adapter}"
+            app:items="@{viewModel.allSimpleSeminar}"/>
+
+    </FrameLayout>
+
+</layout>
