@@ -41,6 +41,8 @@ class UserRepository(private val service: UserService) {
 
         if (token != null) {
             SeminarManagerApplication.prefs.setString("user_token_key", token!!)
+            SeminarManagerApplication.prefs.setString("user_username_key", username!!)
+            SeminarManagerApplication.prefs.setString("user_role_key", role!!)
             return true
         }
         return false

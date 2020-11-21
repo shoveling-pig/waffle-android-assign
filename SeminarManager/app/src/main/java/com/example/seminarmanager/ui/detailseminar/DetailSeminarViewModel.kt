@@ -19,6 +19,14 @@ class DetailSeminarViewModel(private val repository: SeminarRepository) : ViewMo
                 theSeminar.postValue(seminar)
                 allInstructor.postValue(seminar.instructors)
                 allParticipant.postValue(seminar.participants)
+
+                val dummyUser = User(-1, "Empty", "","","","", null, null,"")
+                if (seminar.instructors == null) {
+                    allInstructor.postValue(listOf(dummyUser))
+                }
+                if (seminar.participants == null) {
+                    allParticipant.postValue(listOf(dummyUser))
+                }
             }
     }
 

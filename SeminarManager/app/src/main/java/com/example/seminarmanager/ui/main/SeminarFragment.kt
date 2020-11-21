@@ -5,6 +5,7 @@ import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.seminarmanager.R
+import com.example.seminarmanager.SeminarManagerApplication
 import com.example.seminarmanager.databinding.FragmentSeminarBinding
 import com.example.seminarmanager.ui.createseminar.CreateSeminarActivity
 import org.koin.android.viewmodel.ext.android.sharedViewModel
@@ -26,13 +27,14 @@ class SeminarFragment : Fragment() {
         }
 
         mainViewModel.setSeminarList()
-
         return binding.root
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.actionbar_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
+
+        checkUserRole(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item?.itemId) {
@@ -43,6 +45,13 @@ class SeminarFragment : Fragment() {
             else -> {
                 false
             }
+    }
+
+    private fun checkUserRole(menu: Menu) {
+        val role = SeminarManagerApplication.prefs.getString("user_role_key", "none")
+        if (role == "instructor") {
+            menu.findItem(R.id.plusBtn).isVisible = true
+        }
     }
 
 }
