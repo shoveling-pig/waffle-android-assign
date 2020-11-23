@@ -10,7 +10,7 @@ class PartSeminarIdRepository(context: Context) {
         PartSeminarIdDatabase.getInstance(context).partSeminarIdDao()
     }
 
-    fun getAllIds(): List<PartSeminarId> = dao.getAll()
+    fun getAllIds() = dao.getAll()
 
     fun insertId(id: PartSeminarId) {
         try {

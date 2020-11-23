@@ -21,8 +21,7 @@
             android:id="@+id/seminar_frag_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/item_seminar"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_simple_seminar"
             app:adapter="@{adapter}"
             app:items="@{viewModel.allSimpleSeminar}"/>
 

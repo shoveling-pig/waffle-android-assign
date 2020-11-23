@@ -6,12 +6,12 @@ import retrofit2.http.*
 interface SeminarService {
 
     // 세미나 리스 조회
-    @GET("seminar")
+    @GET("seminar/")
     fun getSeminarList(@Query("name") name: String, @Query("order") order: String) : Single<List<SimpleSeminar>>
 
     // 세미나 생성
     @FormUrlEncoded
-    @POST("seminar")
+    @POST("seminar/")
     fun postSeminar(@Field("name") name: String,
                     @Field("capacity") capacity: String,
                     @Field("count") count: String,
@@ -20,12 +20,12 @@ interface SeminarService {
                     ) : Single<Seminar>
 
     // 특정 세미나 조회
-    @GET("seminar/{seminarId}")
+    @GET("seminar/{seminarId}/")
     fun getSeminar(@Path("seminarId") seminarId: Long) : Single<Seminar>
 
     // 세미나 등록
     @FormUrlEncoded
-    @POST("seminar/{seminarId}/user")
+    @POST("seminar/{seminarId}/user/")
     fun joinSeminar(@Path("seminarId") seminarId: Long) : Single<Seminar>
 
 }

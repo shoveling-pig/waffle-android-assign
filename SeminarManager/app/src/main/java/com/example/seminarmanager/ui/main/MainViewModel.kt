@@ -22,7 +22,14 @@ class MainViewModel(private val seminarRepo: SeminarRepository, private val user
             }
     }
 
-    fun getUserInfo() = userRepo.getUserInfo()
+    fun getUserInfo() {
+        val response = userRepo.getUserInfo()
+        response.subscribeOn(Schedulers.io())
+                .subscribe { user ->
+                    instSeminar.postValue(user.instructor?.seminars)
+                    partSeminar.postValue(user.participant?.seminars)
+                }
+    }
 
     fun editUserInfo(username: String, firstname: String, lastname: String)
         = userRepo.editUserInfo(username, firstname, lastname)

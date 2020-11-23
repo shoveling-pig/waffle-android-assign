@@ -45,7 +45,7 @@ fun bindItems(view: RecyclerView, seminar: List<SimpleSeminar>?) {
     }
 }
 
-@BindingAdapter("items")
+@BindingAdapter("items_inst")
 fun bindInstSeminarItems(view: RecyclerView, seminar: List<Seminar>?) {
     val adapter = view.adapter as? InstSeminarAdapter
     if (seminar != null) {
@@ -53,7 +53,7 @@ fun bindInstSeminarItems(view: RecyclerView, seminar: List<Seminar>?) {
     }
 }
 
-@BindingAdapter("items")
+@BindingAdapter("items_part")
 fun bindPartSeminarItems(view: RecyclerView, seminar: List<Seminar>?) {
     val adapter = view.adapter as? PartSeminarAdapter
     if (seminar != null) {
@@ -61,7 +61,7 @@ fun bindPartSeminarItems(view: RecyclerView, seminar: List<Seminar>?) {
     }
 }
 
-@BindingAdapter("items")
+@BindingAdapter("items_inst")
 fun bindInstItems(view: RecyclerView, inst: List<User>?) {
     val adapter = view.adapter as? InstructorListAdapter
     if (inst != null) {
@@ -69,7 +69,7 @@ fun bindInstItems(view: RecyclerView, inst: List<User>?) {
     }
 }
 
-@BindingAdapter("items")
+@BindingAdapter("items_part")
 fun bindPartItems(view: RecyclerView, part: List<User>?) {
     val adapter = view.adapter as? ParticipantListAdapter
     if (part != null) {

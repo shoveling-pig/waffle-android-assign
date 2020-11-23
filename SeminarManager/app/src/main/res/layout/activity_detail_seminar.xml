@@ -63,7 +63,7 @@
             tools:listitem="@layout/item_detail_seminar_inst"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:adapter="@{instAdapter}"
-            app:items="@{viewModel.allInstructor}"/>
+            app:items_inst="@{viewModel.allInstructor}"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/detail_seminar_part_list"
@@ -74,7 +74,7 @@
             tools:listitem="@layout/item_detail_seminar_part"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:adapter="@{partAdapter}"
-            app:items="@{viewModel.allParticipant}"/>
+            app:items_part="@{viewModel.allParticipant}"/>
 
         <Button
             android:id="@+id/join_btn"

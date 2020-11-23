@@ -22,7 +22,7 @@ class UserFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_seminar, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_user, container, false)
         binding.run {
             lifecycleOwner = this@UserFragment
             viewModel = mainViewModel

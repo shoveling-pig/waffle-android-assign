@@ -55,18 +55,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/item_seminar"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:adapter="@{instSeminarAdapter}"
-                app:items="@{viewModel.instSeminar}"/>
+                app:items_inst="@{viewModel.instSeminar}"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/part_seminar_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/item_seminar"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:adapter="@{partSeminarAdapter}"
-                app:items="@{viewModel.partSeminar}"/>
+                app:items_part="@{viewModel.partSeminar}"/>
 
         </LinearLayout>
     </FrameLayout>

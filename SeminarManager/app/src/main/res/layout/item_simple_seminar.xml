@@ -6,6 +6,10 @@
         <variable
             name="item"
             type="com.example.seminarmanager.api.SimpleSeminar" />
+
+        <variable
+            name="item_inst_list"
+            type="com.example.seminarmanager.api.InstNameList" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -36,7 +40,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:text="@{item.instructors.toString()}" />
+                android:text="@{item_inst_list.listToStr}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

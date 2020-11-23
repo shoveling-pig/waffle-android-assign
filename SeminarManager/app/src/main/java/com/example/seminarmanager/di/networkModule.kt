@@ -1,5 +1,6 @@
 package com.example.seminarmanager.di
 
+import android.util.Log
 import com.example.seminarmanager.BuildConfig
 import com.example.seminarmanager.SeminarManagerApplication
 import com.example.seminarmanager.api.SeminarService
@@ -36,11 +37,13 @@ private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
 
     val tokenInterceptor = object: Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
-            val authHeader = SeminarManagerApplication.prefs.getString("user_token_key", "")
-
+            var authHeader = SeminarManagerApplication.prefs.getString("user_token_key", "none")
             val original = chain.request()
             val builder = original.newBuilder().method(original.method, original.body)
-            builder.header("Authorization", "Token $authHeader")
+            if (authHeader != "none") {
+                builder.header("Authorization", "Token $authHeader")
+            }
+            Log.d("WAFFLE_DEBUG", "NetModule Token : $authHeader")
             return chain.proceed(builder.build())
         }
     }

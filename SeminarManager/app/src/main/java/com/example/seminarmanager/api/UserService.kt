@@ -1,18 +1,19 @@
 package com.example.seminarmanager.api
 
 import io.reactivex.rxjava3.core.Single
+import retrofit2.Response
 import retrofit2.http.*
 
 interface UserService {
 
     // 로그인
     @FormUrlEncoded
-    @PUT("user/login")
+    @PUT("user/login/")
     fun login(@Field("username") username: String, @Field("password") password: String) : Single<User>
 
     // 회원가입
     @FormUrlEncoded
-    @POST("user")
+    @POST("user/")
     fun signUp(@Field("username") username: String,
                @Field("password") password: String,
                @Field("email") email: String,
@@ -23,15 +24,15 @@ interface UserService {
                @Field("year") year: String,
                @Field("university") university: String,
                @Field("accepted") accepted: String
-               ): Single<User>
+               ): Single<Response<User>>
 
     // 회원정보 조회
-    @GET("user/me")
+    @GET("user/me/")
     fun getUserInfo() : Single<User>
 
     // 회원정보 수정
     @FormUrlEncoded
-    @PUT("user/me")
+    @PUT("user/me/")
     fun editUserInfo(@Field("username") username: String,
                     @Field("firstname") firstname: String,
                     @Field("lastname") lastname: String

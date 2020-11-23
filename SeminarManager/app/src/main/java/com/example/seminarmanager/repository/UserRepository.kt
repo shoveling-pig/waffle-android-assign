@@ -31,21 +31,22 @@ class UserRepository(private val service: UserService) {
     }
 
     fun signUp(username:String, password:String, email:String, firstname:String, lastname:String, role:String, company:String, year:String, university:String, accepted:String): Boolean {
-        var token:String? = null
+        var isSuccess = true
 
         val response = service.signUp(username, password, email, firstname, lastname, role, company, year, university, accepted)
         response.subscribeOn(Schedulers.io())
-            .subscribe { user ->
-                token = user.token
-            }
+            .subscribe ({ response ->
+                if (response.isSuccessful) {
+                    val token = response.body()?.token
+                    SeminarManagerApplication.prefs.setString("user_token_key", token!!)
+                    SeminarManagerApplication.prefs.setString("user_username_key", username!!)
+                    SeminarManagerApplication.prefs.setString("user_role_key", role!!)
 
-        if (token != null) {
-            SeminarManagerApplication.prefs.setString("user_token_key", token!!)
-            SeminarManagerApplication.prefs.setString("user_username_key", username!!)
-            SeminarManagerApplication.prefs.setString("user_role_key", role!!)
-            return true
-        }
-        return false
+                    Log.d("WAFFLE_DEBUG", "SignUp Token : $token")
+                }
+            }, { isSuccess = false })
+
+        return isSuccess
     }
 
     fun getUserInfo() = service.getUserInfo()
