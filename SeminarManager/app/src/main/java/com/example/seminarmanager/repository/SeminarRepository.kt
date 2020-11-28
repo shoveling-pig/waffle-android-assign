@@ -1,5 +1,6 @@
 package com.example.seminarmanager.repository
 
+import android.util.Log
 import com.example.seminarmanager.api.SeminarService
 import io.reactivex.rxjava3.schedulers.Schedulers
 
@@ -17,7 +18,10 @@ class SeminarRepository(private val service: SeminarService) {
 
     fun getSeminar(seminarId: Long) = service.getSeminar(seminarId)
 
-    fun joinSeminar(seminarId: Long) = service.joinSeminar(seminarId)
+    fun joinSeminar(seminarId: Long, role: String) {
+        service.joinSeminar(role, seminarId)
+        Log.d("WAFFLE_DEBUG", "joinSeminar in SeminarRepo")
+    }
 
     fun getSeminarList() = service.getSeminarList("", "")
 }

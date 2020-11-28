@@ -1,5 +1,6 @@
 package com.example.seminarmanager.ui.detailseminar
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.seminarmanager.api.Seminar
@@ -30,7 +31,8 @@ class DetailSeminarViewModel(private val repository: SeminarRepository) : ViewMo
             }
     }
 
-    fun joinSeminar(seminarId: Long) {
-        repository.joinSeminar(seminarId)
+    fun joinSeminar(seminarId: Long, role: String) {
+        repository.joinSeminar(seminarId, role)
+        Log.d("WAFFLE_DEBUG", "joinSeminar(seminarId = $seminarId, role = $role)")
     }
 }

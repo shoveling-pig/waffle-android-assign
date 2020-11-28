@@ -26,6 +26,7 @@ class SeminarAdapter(private val partViewModel: PartSeminarIdViewModel) : Recycl
     override fun onBindViewHolder(holder: SeminarViewHolder, position: Int) {
         val item = items[position]
         holder.bindItem(item)
+        var changed = false
 
         val username = SeminarManagerApplication.prefs.getString("user_username_key", "none")
         item.instructors.forEach {
@@ -40,12 +41,15 @@ class SeminarAdapter(private val partViewModel: PartSeminarIdViewModel) : Recycl
                 partSeminarIds.forEach {
                     if (it.id == item.id) {
                         holder.itemView.card_view.setBackgroundColor(Color.parseColor("#b3e5fc"))
+                        changed = true
                     }
                 }
             })
             thread.start()
         } catch (e: Exception) { e.printStackTrace() }
-
+        if (!changed) {
+            holder.itemView.card_view.setBackgroundColor(Color.parseColor("#ffffff"))
+        }
     }
 
     fun setItems(seminars: List<SimpleSeminar>) {

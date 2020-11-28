@@ -45,9 +45,11 @@ class DetailSeminarActivity : AppCompatActivity() {
     }
 
     private fun join() {
-        detailSeminarViewModel.joinSeminar(seminarId)
-
-        val role = SeminarManagerApplication.prefs.getString("user_role_key", "none")
+        var role = SeminarManagerApplication.prefs.getString("user_role_key", "none")
+        if (role != "none") {
+            detailSeminarViewModel.joinSeminar(seminarId, role)
+        }
+        role = SeminarManagerApplication.prefs.getString("user_role_key", "none")
         if (role == "participant") {
             partSeminarIdViewModel.insertId(seminarId)
         }

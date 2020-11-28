@@ -5,7 +5,7 @@ import retrofit2.http.*
 
 interface SeminarService {
 
-    // 세미나 리스 조회
+    // 세미나 리스트 조회
     @GET("seminar/")
     fun getSeminarList(@Query("name") name: String, @Query("order") order: String) : Single<List<SimpleSeminar>>
 
@@ -20,11 +20,12 @@ interface SeminarService {
                     ) : Single<Seminar>
 
     // 특정 세미나 조회
-    @GET("seminar/{seminarId}/")
-    fun getSeminar(@Path("seminarId") seminarId: Long) : Single<Seminar>
+    @GET("seminar/{getSeminarId}/")
+    fun getSeminar(@Path("getSeminarId") seminarId: Long) : Single<Seminar>
 
     // 세미나 등록
-    @POST("seminar/{seminarId}/user/")
-    fun joinSeminar(@Path("seminarId") seminarId: Long) : Single<Seminar>
+    @FormUrlEncoded
+    @POST("seminar/{joinSeminarId}/user/")
+    fun joinSeminar(@Field("role") role: String, @Path("joinSeminarId") seminarId: Long) : Single<Seminar>
 
 }

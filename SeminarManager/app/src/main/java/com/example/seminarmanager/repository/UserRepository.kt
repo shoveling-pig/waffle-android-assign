@@ -14,10 +14,10 @@ class UserRepository(private val service: UserService) {
         response.subscribeOn(Schedulers.io())
                 .subscribe { user ->
                     token = user.token
-                    if(user.participant==null) {
-                        role = "instructor"
+                    role = if (user.participant==null) {
+                        "instructor"
                     } else {
-                        role = "participant"
+                        "participant"
                     }
                 }
 
