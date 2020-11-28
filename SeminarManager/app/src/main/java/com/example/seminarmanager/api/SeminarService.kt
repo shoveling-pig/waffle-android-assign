@@ -24,7 +24,6 @@ interface SeminarService {
     fun getSeminar(@Path("seminarId") seminarId: Long) : Single<Seminar>
 
     // 세미나 등록
-    @FormUrlEncoded
     @POST("seminar/{seminarId}/user/")
     fun joinSeminar(@Path("seminarId") seminarId: Long) : Single<Seminar>
 

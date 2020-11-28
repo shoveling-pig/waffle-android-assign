@@ -31,56 +31,78 @@
                 android:id="@+id/detail_seminar_name"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.theSeminar.component2()}" />
+                android:text="@{viewModel.theSeminar.name}" />
             <TextView
                 android:id="@+id/detail_seminar_capacity"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.theSeminar.component3()}" />
+                android:text="@{viewModel.theSeminar.capacity}" />
             <TextView
                 android:id="@+id/detail_seminar_count"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.theSeminar.component4()}" />
+                android:text="@{viewModel.theSeminar.count}" />
             <TextView
                 android:id="@+id/detail_seminar_time"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.theSeminar.component5()}" />
+                android:text="@{viewModel.theSeminar.time}" />
             <TextView
                 android:id="@+id/detail_seminar_online"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.theSeminar.component6()}" />
+                android:text="@{viewModel.theSeminar.online}" />
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/detail_seminar_inst_list"
+        <LinearLayout
+            android:id="@+id/detail_seminar_rv_layout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@id/detail_seminar_form_layout"
-            app:layout_constraintBottom_toTopOf="@+id/detail_seminar_part_list"
-            tools:listitem="@layout/item_detail_seminar_inst"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:adapter="@{instAdapter}"
-            app:items_inst="@{viewModel.allInstructor}"/>
+            app:layout_constraintBottom_toTopOf="@+id/join_btn">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/detail_seminar_part_list"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/detail_seminar_inst_list"
-            app:layout_constraintBottom_toTopOf="@+id/join_btn"
-            tools:listitem="@layout/item_detail_seminar_part"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:adapter="@{partAdapter}"
-            app:items_part="@{viewModel.allParticipant}"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="진행자들"
+                android:textSize="25sp"
+                android:textColor="@color/black" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/detail_seminar_inst_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_detail_seminar_inst"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:adapter="@{instAdapter}"
+                app:items_inst="@{viewModel.allInstructor}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="참여자들"
+                android:textSize="25sp"
+                android:textColor="@color/black" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/detail_seminar_part_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_detail_seminar_part"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:adapter="@{partAdapter}"
+                app:items_part="@{viewModel.allParticipant}"/>
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/join_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/detail_seminar_part_list"
+            app:layout_constraintTop_toBottomOf="@id/detail_seminar_rv_layout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

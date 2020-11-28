@@ -31,7 +31,9 @@ class MainViewModel(private val seminarRepo: SeminarRepository, private val user
         val response = userRepo.getUserInfo()
         response.subscribeOn(Schedulers.io())
                 .subscribe ({ user ->
-                    instSeminar.postValue(user.instructor?.charge)
+                    if (user.instructor != null) {
+                        instSeminar.postValue(listOf(user.instructor?.charge))
+                    }
                     partSeminar.postValue(user.participant?.seminars)
                 }, { error ->
                     error.printStackTrace()

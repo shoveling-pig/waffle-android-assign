@@ -25,16 +25,6 @@ private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
     val loggingInterceptor = HttpLoggingInterceptor()
     loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
 
-    /*
-    val apiKeyInterceptor = object: Interceptor {
-        override fun intercept(chain: Interceptor.Chain): Response {
-            val request = chain.request()
-            val url = request.url.newBuilder().build()
-            return chain.proceed(request.newBuilder().url(url).build())
-        }
-    }
-     */
-
     val tokenInterceptor = object: Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             var authHeader = SeminarManagerApplication.prefs.getString("user_token_key", "none")
@@ -50,7 +40,6 @@ private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
 
     OkHttpClient.Builder()
         .addInterceptor(loggingInterceptor)
-        //.addInterceptor(apiKeyInterceptor)
         .addInterceptor(tokenInterceptor)
         .build()
 } else OkHttpClient

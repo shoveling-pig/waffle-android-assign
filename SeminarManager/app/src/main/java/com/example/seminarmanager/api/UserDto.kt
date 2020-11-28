@@ -16,12 +16,12 @@ data class ParticipantProfile(
     val id: Long,
     val university: String,
     val accepted: Boolean,
-    val seminars: List<Seminar>?
+    val seminars: List<Seminar>
 )
 
 data class InstructorProfile(
     val id: Long,
     val company: String,
     val year: Int,
-    val charge: List<Seminar>?
+    val charge: Seminar
 )

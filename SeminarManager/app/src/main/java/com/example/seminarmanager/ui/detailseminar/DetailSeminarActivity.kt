@@ -8,7 +8,6 @@ import androidx.databinding.DataBindingUtil
 import com.example.seminarmanager.R
 import com.example.seminarmanager.SeminarManagerApplication
 import com.example.seminarmanager.databinding.ActivityDetailSeminarBinding
-import com.example.seminarmanager.databinding.ActivityLoginBinding
 import com.example.seminarmanager.room.PartSeminarIdViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 

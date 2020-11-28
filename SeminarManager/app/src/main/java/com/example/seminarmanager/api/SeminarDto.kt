@@ -3,8 +3,8 @@ package com.example.seminarmanager.api
 data class Seminar(
     val id: Long,
     val name: String,
-    val capacity: Int,
-    val count: Int,
+    val capacity: String,
+    val count: String,
     val time: String,
     val online: String,
     val instructors: List<User>,
