@@ -28,6 +28,6 @@ class DetailActivity : AppCompatActivity() {
             viewModel = detailViewModel
         }
 
-        detailViewModel?.setMovie(movieId)
+        detailViewModel.setMovie(movieId)
     }
 }
