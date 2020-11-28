@@ -50,19 +50,39 @@
                     android:text="수정하기" />
             </LinearLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="내가 진행자인 세미나"
+                android:textSize="20sp"
+                android:textColor="@color/black"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/inst_seminar_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/item_seminar"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:adapter="@{instSeminarAdapter}"
                 app:items_inst="@{viewModel.instSeminar}"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="내가 참가자인 세미나"
+                android:textSize="20sp"
+                android:textColor="@color/black"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/part_seminar_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/item_seminar"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:adapter="@{partSeminarAdapter}"
                 app:items_part="@{viewModel.partSeminar}"/>
 

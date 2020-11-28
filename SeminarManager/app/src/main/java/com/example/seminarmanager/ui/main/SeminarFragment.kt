@@ -1,6 +1,7 @@
 package com.example.seminarmanager.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -29,14 +30,16 @@ class SeminarFragment : Fragment() {
         }
 
         mainViewModel.setSeminarList()
+        setHasOptionsMenu(true)
         return binding.root
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.actionbar_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.actionbar_menu, menu)
 
         checkUserRole(menu)
+        Log.d("WAFFLE_DEBUG", "onCreateOptionsMenu()")
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item?.itemId) {
@@ -54,6 +57,7 @@ class SeminarFragment : Fragment() {
         if (role == "instructor") {
             menu.findItem(R.id.plusBtn).isVisible = true
         }
+        Log.d("WAFFLE_DEBUG", "role : $role")
     }
 
 }

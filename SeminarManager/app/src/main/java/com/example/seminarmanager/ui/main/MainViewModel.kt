@@ -1,5 +1,6 @@
 package com.example.seminarmanager.ui.main
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.seminarmanager.api.Seminar
@@ -20,15 +21,21 @@ class MainViewModel(private val seminarRepo: SeminarRepository, private val user
             .subscribe { simpleSeminar ->
                 allSimpleSeminar.postValue(simpleSeminar)
             }
+
+        Log.d("WAFFLE_DEBUG", "seminar fragment ${allSimpleSeminar.value.toString()}")
+        Log.d("WAFFLE_DEBUG", "user fragment - inst ${instSeminar.value.toString()}")
+        Log.d("WAFFLE_DEBUG", "user fragment - part ${partSeminar.value.toString()}")
     }
 
     fun getUserInfo() {
         val response = userRepo.getUserInfo()
         response.subscribeOn(Schedulers.io())
-                .subscribe { user ->
-                    instSeminar.postValue(user.instructor?.seminars)
+                .subscribe ({ user ->
+                    instSeminar.postValue(user.instructor?.charge)
                     partSeminar.postValue(user.participant?.seminars)
-                }
+                }, { error ->
+                    error.printStackTrace()
+                })
     }
 
     fun editUserInfo(username: String, firstname: String, lastname: String)

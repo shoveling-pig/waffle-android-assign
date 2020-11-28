@@ -10,7 +10,6 @@ import com.example.seminarmanager.api.InstNameList
 import com.example.seminarmanager.api.SimpleSeminar
 import com.example.seminarmanager.databinding.ItemSimpleSeminarBinding
 import com.example.seminarmanager.room.PartSeminarIdViewModel
-import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.item_simple_seminar.view.*
 import java.lang.Exception
 

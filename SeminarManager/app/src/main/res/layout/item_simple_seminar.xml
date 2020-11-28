@@ -14,32 +14,53 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
-        android:layout_margin="6dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:padding="10dp"
         app:cardBackgroundColor="#ffffff">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
+                android:id="@+id/simple_seminar_seminarName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/tv_instructor_list"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="10dp"
+                android:text="세미나 이름 : "/>
+
+            <TextView
                 android:id="@+id/tv_simple_seminar_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/tv_instructor_name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/tv_instructor_list"
+                app:layout_constraintStart_toEndOf="@+id/simple_seminar_seminarName"
+                android:layout_marginLeft="10dp"
                 android:text="@{item.name}" />
 
             <TextView
-                android:id="@+id/tv_instructor_name"
+                android:id="@+id/simple_seminar_instList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/tv_seminar_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_simple_seminar_name"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="10dp"
+                android:text="진행자들 : "/>
+
+            <TextView
+                android:id="@+id/tv_instructor_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_simple_seminar_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/simple_seminar_instList"
+                android:layout_marginLeft="10dp"
                 android:text="@{item_inst_list.listToStr}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

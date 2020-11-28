@@ -16,15 +16,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.main.SeminarFragment">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/seminar_frag_list"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/item_simple_seminar"
-            app:adapter="@{adapter}"
-            app:items="@{viewModel.allSimpleSeminar}"/>
+            android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="세미나 리스트"
+                android:textSize="25sp"
+                android:textColor="@color/black"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/seminar_frag_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_simple_seminar"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:adapter="@{adapter}"
+                app:items="@{viewModel.allSimpleSeminar}"/>
+
+        </LinearLayout>
     </FrameLayout>
 
 </layout>
